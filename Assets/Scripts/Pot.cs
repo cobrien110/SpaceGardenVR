@@ -5,15 +5,15 @@ using UnityEngine;
 public class Pot : MonoBehaviour
 {
     public Transform seedGrowPoint;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private Plant myPlant;
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        
+        // add water to plant
+        if (other.tag.Equals("Water"))
+        {
+            if (myPlant != null) myPlant.Water(1);
+            Destroy(other.gameObject);
+        }
     }
 }

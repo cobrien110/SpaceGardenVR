@@ -12,12 +12,6 @@ public class WateringCan : MonoBehaviour
     [SerializeField] private float dirRandomRange = 0.15f;
     [SerializeField] private float waterForce = 0.5f;
     private float timer = 0f;
-    private bool isRotated;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void FixedUpdate()
@@ -36,7 +30,7 @@ public class WateringCan : MonoBehaviour
         if (xRot > 180f)
             xRot -= 360f;
 
-        Debug.Log(xRot);
+        //Debug.Log(xRot);
 
         if (xRot >= rotThreshold)
         {
