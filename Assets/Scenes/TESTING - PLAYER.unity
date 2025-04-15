@@ -653,7 +653,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugText: {fileID: 386350954}
-  maxLogs: 6
+  maxLogs: 8
 --- !u!114 &386350954
 MonoBehaviour:
   m_ObjectHideFlags: 0

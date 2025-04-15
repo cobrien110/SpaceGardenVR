@@ -56,7 +56,7 @@ public class SellGun : MonoBehaviour
             //Debug.Log(child.name);
             if (child.name.Contains("Socket"))
             {
-                Debug.Log("Found Socket in gun transform");
+                //Debug.Log("Found Socket in gun transform");
                 SetLaser(false);
                 return;
             }
