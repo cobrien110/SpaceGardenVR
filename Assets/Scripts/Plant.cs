@@ -21,7 +21,10 @@ public class Plant : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (isGrowing)
+        {
+            transform.position = transform.parent.position;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -29,23 +32,28 @@ public class Plant : MonoBehaviour
         // Bury into pot
         if (other.tag.Equals("Dirt"))
         {
-            isGrowing = true;
+            Pot p = other.GetComponent<Pot>();
+            if (p != null && !p.GetPlant())
+            {
+                p.SetPlant(this);
 
-            Pot p = other.GetComponentInParent<Pot>();
-            transform.parent = p.seedGrowPoint;
-            transform.position = p.seedGrowPoint.position;
+                isGrowing = true;
+                transform.parent = p.seedGrowPoint;
+                transform.position = transform.parent.position;
 
-            RB.isKinematic = false;
-            RB.velocity = Vector3.zero;
-            RB.useGravity = false;
-            col.enabled = false;
+                RB.isKinematic = false;
+                RB.velocity = Vector3.zero;
+                RB.useGravity = false;
+                //col.enabled = false;
 
-            XRGrab.enabled = false;
+                XRGrab.enabled = false;
+            }
         }
     }
 
     public void Water(int amount)
     {
+        Debug.Log("Adding water, " + name + " now has " + water + " water");
         water += amount;
     }
 }

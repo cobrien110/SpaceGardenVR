@@ -16,6 +16,11 @@ public class SellGun : MonoBehaviour
         SetLaser(false);   
     }
 
+    private void Update()
+    {
+        CheckForSocket();
+    }
+
     public void Shoot()
     {
         // Check to see plants within range that can be sold
@@ -41,5 +46,20 @@ public class SellGun : MonoBehaviour
     public void SetLaser(bool isOn)
     {
         laser.SetActive(isOn);
+    }
+
+    private void CheckForSocket()
+    {
+        if (!laser.activeInHierarchy) return;
+        foreach (Transform child in transform)
+        {
+            //Debug.Log(child.name);
+            if (child.name.Contains("Socket"))
+            {
+                Debug.Log("Found Socket in gun transform");
+                SetLaser(false);
+                return;
+            }
+        }
     }
 }

@@ -16,4 +16,15 @@ public class Pot : MonoBehaviour
             Destroy(other.gameObject);
         }
     }
+
+    public bool GetPlant()
+    {
+        if (myPlant != null) return true;
+        return false;
+    }
+
+    public void SetPlant(Plant plant)
+    {
+        myPlant = plant;
+    }
 }
