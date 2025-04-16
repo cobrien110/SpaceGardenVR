@@ -6,6 +6,9 @@ public class Pot : MonoBehaviour
 {
     public Transform seedGrowPoint;
     [SerializeField] private Plant myPlant;
+    public float rangeChomperEat = 1f;
+    public ChomperPlant Chomp;
+    public GameObject parentObject;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -26,5 +29,19 @@ public class Pot : MonoBehaviour
     public void SetPlant(Plant plant)
     {
         myPlant = plant;
+    }
+
+    public void Start()
+    {
+        Chomp = GameObject.FindAnyObjectByType<ChomperPlant>();
+    }
+
+    public void Update()
+    {
+        if (Vector3.Distance(transform.position, Chomp.transform.position) < rangeChomperEat && myPlant != null)
+        {
+            myPlant.FeedToChomper();
+            Destroy(parentObject);
+        }
     }
 }

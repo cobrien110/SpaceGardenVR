@@ -16,7 +16,7 @@ public class SocketHolder : MonoBehaviour
 
     private void Update()
     {
-        transform.localPosition = new Vector3(0, yOffset, 0);
+        transform.position = new Vector3(cam.position.x, yOffset, cam.position.z);
 
         // Get the head's forward direction on the horizontal plane
         Vector3 flatForward = cam.forward;

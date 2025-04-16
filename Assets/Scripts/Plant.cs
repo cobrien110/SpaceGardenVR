@@ -8,8 +8,13 @@ public class Plant : MonoBehaviour
     private Rigidbody RB;
     private XRGrabInteractable XRGrab;
     [SerializeField] private bool isGrowing = false;
+    [SerializeField] private bool isInPot = false;
     private Collider col;
     [SerializeField] private int water = 0;
+
+    public int[] foodAmountsPerStage = { 2, 4, 8, 16};
+    public float[] satiationAmountsPerStage = { 2, 4, 8, 16};
+    public int currentStage = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +26,7 @@ public class Plant : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isGrowing)
+        if (isGrowing && transform.parent != null)
         {
             transform.position = transform.parent.position;
         }
@@ -38,6 +43,7 @@ public class Plant : MonoBehaviour
                 p.SetPlant(this);
 
                 isGrowing = true;
+                isInPot = true;
                 transform.parent = p.seedGrowPoint;
                 transform.position = transform.parent.position;
 
@@ -49,11 +55,22 @@ public class Plant : MonoBehaviour
                 XRGrab.enabled = false;
             }
         }
+
+        if (other.tag.Equals("Chomper") && !isInPot)
+        {
+            FeedToChomper();
+        }
     }
 
     public void Water(int amount)
     {
         Debug.Log("Adding water, " + name + " now has " + water + " water");
         water += amount;
+    }
+
+    public void FeedToChomper()
+    {
+        ChomperPlant chomp = GameObject.FindAnyObjectByType<ChomperPlant>();
+        if (chomp != null) chomp.Feed(this);
     }
 }

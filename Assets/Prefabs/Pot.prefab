@@ -120,6 +120,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   seedGrowPoint: {fileID: 3977064751467141350}
   myPlant: {fileID: 0}
+  rangeChomperEat: 1
+  Chomp: {fileID: 0}
+  parentObject: {fileID: 5743844785486729137}
 --- !u!1 &1737362532590227729
 GameObject:
   m_ObjectHideFlags: 0
