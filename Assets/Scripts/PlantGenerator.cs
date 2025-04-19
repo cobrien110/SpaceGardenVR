@@ -8,18 +8,19 @@ public class PlantGenerator : MonoBehaviour
     [Header("Growth Settings")]
     public float plantHeight = 5f;
     public int maxKnots = 10;
-    public float growthSpeed = 0.2f; // Units per second
-    public float knotInterval = 0.1f; // New knot every 10% of growth
+    public float growthSpeed = 0.2f;
+    public float knotInterval = 0.1f;
 
-    [Header("Spline Settings")]
+    [Header("Visual Settings")]
     public float bendStrength = 0.5f;
     public float knotDistance = 0.5f;
     public Material stalkMaterial;
 
     private GameObject plantObject;
     private SplineContainer splineContainer;
+    private SplineExtrude splineExtrude;
     private Spline spline;
-    private SplineExtrude extrude;
+    private MeshFilter meshFilter;
 
     private float growthProgress = 0f;
     private int knotsAdded = 1;
@@ -33,8 +34,7 @@ public class PlantGenerator : MonoBehaviour
     {
         if (growthProgress < 1f)
         {
-            float delta = Time.deltaTime * growthSpeed;
-            SetGrowth(growthProgress + delta);
+            SetGrowth(growthProgress + Time.deltaTime * growthSpeed);
         }
     }
 
@@ -43,70 +43,102 @@ public class PlantGenerator : MonoBehaviour
         if (plantObject != null)
             Destroy(plantObject);
 
-        // Create and parent the plant object
         plantObject = new GameObject("GeneratedPlant");
-        plantObject.transform.parent = transform;
-        plantObject.transform.localPosition = Vector3.zero;
+        plantObject.transform.SetParent(transform, false);
 
-        // Add spline components
         splineContainer = plantObject.AddComponent<SplineContainer>();
-        extrude = plantObject.AddComponent<SplineExtrude>();
-        extrude.extrudeMethod = SplineExtrude.ExtrudeMethod.PerSegment;
-        extrude.rebuildOnSplineChange = true;
+        splineExtrude = plantObject.AddComponent<SplineExtrude>();
+        splineExtrude.Container = splineContainer;
 
-        // Apply material if given
-        if (stalkMaterial != null)
-        {
-            var meshRenderer = plantObject.GetComponent<MeshRenderer>();
-            if (meshRenderer == null)
-                meshRenderer = plantObject.AddComponent<MeshRenderer>();
-            meshRenderer.sharedMaterial = stalkMaterial;
-        }
+        //ensure MeshFilter exists
+        meshFilter = plantObject.GetComponent<MeshFilter>();
+        if (meshFilter == null)
+            meshFilter = plantObject.AddComponent<MeshFilter>();
 
-        // Initialize spline
+        //create a writable mesh and assign it
+        Mesh generatedMesh = new Mesh();
+        generatedMesh.name = "GeneratedPlantMesh";
+        generatedMesh.MarkDynamic(); //helps performance for runtime updates
+        meshFilter.sharedMesh = generatedMesh;
+
+        //ensure MeshRenderer exists and apply material
+        MeshRenderer meshRenderer = plantObject.GetComponent<MeshRenderer>();
+        if (meshRenderer == null)
+            meshRenderer = plantObject.AddComponent<MeshRenderer>();
+        meshRenderer.sharedMaterial = stalkMaterial;
+
+        //initialize spline with 2 knots
         spline = new Spline();
-        Vector3 basePos = Vector3.zero;
-        spline.Add(new BezierKnot(basePos));
-        spline.Add(new BezierKnot(basePos + Vector3.up * knotDistance));
+        Vector3 start = Vector3.zero;
+        Vector3 first = Vector3.up * knotDistance;
+
+        //downward tangent for the base
+        Vector3 downTangent = Vector3.down * 0.1f;
+        Vector3 upTangent = Vector3.up * 0.1f;
+
+        spline.Add(new BezierKnot(start)
+        {
+            TangentIn = downTangent,
+            TangentOut = upTangent
+        });
+
+        spline.Add(new BezierKnot(first)
+        {
+            TangentIn = -upTangent,
+            TangentOut = upTangent
+        });
+
         splineContainer.Spline = spline;
 
-        knotsAdded = 1;
         growthProgress = 0f;
+        knotsAdded = 1;
+
+        //force initial refresh
+        splineExtrude.Rebuild();
     }
 
     public void SetGrowth(float progress)
     {
         growthProgress = Mathf.Clamp01(progress);
 
-        float currentHeight = plantHeight * growthProgress;
+        float targetHeight = plantHeight * growthProgress;
 
-        // Move the last knot upwards
         if (spline.Count > 1)
         {
-            BezierKnot last = spline[spline.Count - 1];
-            last.Position = new Vector3(last.Position.x, currentHeight, last.Position.z);
+            var last = spline[spline.Count - 1];
+            last.Position = new Vector3(last.Position.x, targetHeight, last.Position.z);
             spline[spline.Count - 1] = last;
         }
 
-        // Add a new knot at intervals
         if (growthProgress >= knotInterval * knotsAdded && spline.Count < maxKnots)
         {
             AddKnot();
             knotsAdded++;
         }
 
-        // Force mesh update
-        extrude.Refresh();
+        //request rebuild
+        splineExtrude.Rebuild();
     }
 
     private void AddKnot()
     {
         Vector3 lastPos = spline[spline.Count - 1].Position;
         Vector3 offset = Random.insideUnitSphere;
-        offset.y = Mathf.Abs(offset.y); // Bias toward upward
+        offset.y = Mathf.Abs(offset.y);
         offset *= bendStrength;
 
-        Vector3 newPos = lastPos + offset + Vector3.up * knotDistance;
-        spline.Add(new BezierKnot(newPos));
+        Vector3 nextPos = lastPos + offset + Vector3.up * knotDistance;
+
+        //calculate tangent pointing in growth direction
+        Vector3 forward = (nextPos - lastPos).normalized * 0.1f;
+
+        BezierKnot newKnot = new BezierKnot(nextPos)
+        {
+            TangentIn = -forward,
+            TangentOut = forward
+        };
+
+        spline.Add(newKnot);
+
     }
 }

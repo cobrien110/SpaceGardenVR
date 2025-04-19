@@ -961,6 +961,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pot (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5743844785486729137, guid: 278e71cfba6a9fe4fafae52843934422, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7756476388170018402, guid: 278e71cfba6a9fe4fafae52843934422, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -1613,7 +1617,7 @@ Transform:
   m_GameObject: {fileID: 1870485987}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.9210427, y: -1.481799, z: 4.1658974}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1631,14 +1635,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea310b33aaac8e84494963ca51039aaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  growthProgress: 0
-  maxHeight: 5
-  maxBranches: 5
-  branchFrequency: 0.3
-  leafFrequency: 0.5
+  plantHeight: 5
+  maxKnots: 10
+  growthSpeed: 0.2
+  knotInterval: 0.1
+  bendStrength: 0.5
+  knotDistance: 0.5
   stalkMaterial: {fileID: 2100000, guid: acedbeb644e8c044289f5cb0397ba47c, type: 2}
-  leafPrefab: {fileID: 4049120432095053748}
-  budPrefab: {fileID: 980222037748458636}
 --- !u!1001 &1951110155
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1839,11 +1842,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44a257c97a70f9d499a47a708bd1cbd7, type: 3}
---- !u!1 &980222037748458636 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 805433191750018533, guid: 44a257c97a70f9d499a47a708bd1cbd7, type: 3}
-  m_PrefabInstance: {fileID: 980222037748458635}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1000878096553733185
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1958,11 +1956,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99e9e78548702ac4a902b8f313e2a205, type: 3}
---- !u!1 &4049120432095053748 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3523520175809214849, guid: 99e9e78548702ac4a902b8f313e2a205, type: 3}
-  m_PrefabInstance: {fileID: 4049120432095053747}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4121805870791846440
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2088,6 +2081,10 @@ PrefabInstance:
     - target: {fileID: 5743844785486729137, guid: 278e71cfba6a9fe4fafae52843934422, type: 3}
       propertyPath: m_Name
       value: Pot
+      objectReference: {fileID: 0}
+    - target: {fileID: 5743844785486729137, guid: 278e71cfba6a9fe4fafae52843934422, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7756476388170018402, guid: 278e71cfba6a9fe4fafae52843934422, type: 3}
       propertyPath: m_LocalScale.x
