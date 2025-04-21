@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement; // For restarting or ending the game
+using UnityEngine.UI;
+
 
 public class GameOverManager : MonoBehaviour
 {
     public ChomperPlant chomper;
+    public string gameOverSceneName = "GameOverScene";
 
     private bool gameOverTriggered = false;
 
@@ -21,10 +24,12 @@ public class GameOverManager : MonoBehaviour
     void EndGame()
     {
         Debug.Log("Game Over! The Chomper Plant has starved.");
-        // You can add any game-over logic here, like loading a game over screen:
-        // SceneManager.LoadScene("GameOverScene");
+        StartCoroutine(LoadGameOverScene());
+    }
 
-        // Or just stop time as a placeholder:
-        Time.timeScale = 0;
+    IEnumerator LoadGameOverScene()
+    {
+        yield return new WaitForSeconds(2f); // optional delay
+        SceneManager.LoadScene(gameOverSceneName);
     }
 }
