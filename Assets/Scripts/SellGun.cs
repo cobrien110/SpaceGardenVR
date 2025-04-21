@@ -34,6 +34,7 @@ public class SellGun : MonoBehaviour
             if (s != null)
             {
                 Debug.Log("Selling :" + s.name + " for a value of " + s.GetValue());
+                s.Sell();
                 Destroy(s.gameObject);
             }
         } else

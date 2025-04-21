@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ShopButton : MonoBehaviour
 {
@@ -9,10 +10,13 @@ public class ShopButton : MonoBehaviour
     public ShopManager SM;
     public float force = 4f;
     public int waterUpgrade = 0;
+    public TextMeshProUGUI text;
+    public string message = "$$";
     // Start is called before the first frame update
     void Start()
     {
         if (SM == null) SM = GameObject.FindAnyObjectByType<ShopManager>();
+        if (text != null) text.text = message + cost;
     }
 
     // Update is called once per frame
