@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ShopManager : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private float launchForce = 0.5f;
     private StatTracker ST;
     public float fireRatePerUpgrade = 0.05f;
+    public TextMeshProUGUI text;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +20,7 @@ public class ShopManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (text != null) text.text = "MONEY: $" + ST.money;
     }
 
     public void SpawnAndFire(GameObject item)
