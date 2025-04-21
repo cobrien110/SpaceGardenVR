@@ -111,10 +111,34 @@ MonoBehaviour:
       m_Calls: []
   m_SelectEntered:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5162543651277522797}
+        m_TargetAssemblyTypeName: Plant, Assembly-CSharp
+        m_MethodName: SetIsBeingHeld
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   m_SelectExited:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5162543651277522797}
+        m_TargetAssemblyTypeName: Plant, Assembly-CSharp
+        m_MethodName: SetIsBeingHeld
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_FirstFocusEntered:
     m_PersistentCalls:
       m_Calls: []
@@ -201,6 +225,7 @@ MonoBehaviour:
   isGrowing: 0
   isInPot: 0
   water: 0
+  isBeingHeld: 0
   foodAmountsPerStage: 02000000040000000800000010000000
   satiationAmountsPerStage:
   - 2

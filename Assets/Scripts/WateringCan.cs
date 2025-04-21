@@ -12,14 +12,27 @@ public class WateringCan : MonoBehaviour
     [SerializeField] private float dirRandomRange = 0.15f;
     [SerializeField] private float waterForce = 0.5f;
     private float timer = 0f;
+    private StatTracker ST;
 
+    private void Start()
+    {
+        ST = GameObject.FindAnyObjectByType<StatTracker>();
+    }
     // Update is called once per frame
     void FixedUpdate()
     {
+        GetStats();
         if (CheckRotation())
         {
             SpawnWater();
         }
+    }
+
+    private void GetStats()
+    {
+        spawnNum = ST.waterCanDropAmount;
+        fireRate = ST.waterCanFireRate;
+        waterForce = ST.waterForce;
     }
 
     private bool CheckRotation()

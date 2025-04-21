@@ -11,6 +11,7 @@ public class Plant : MonoBehaviour
     [SerializeField] private bool isInPot = false;
     private Collider col;
     [SerializeField] private int water = 0;
+    public bool isBeingHeld = false;
 
     public int[] foodAmountsPerStage = { 2, 4, 8, 16};
     public float[] satiationAmountsPerStage = { 2, 4, 8, 16};
@@ -38,7 +39,7 @@ public class Plant : MonoBehaviour
         if (other.tag.Equals("Dirt"))
         {
             Pot p = other.GetComponent<Pot>();
-            if (p != null && !p.GetPlant())
+            if (p != null && !p.GetPlant() && !isBeingHeld)
             {
                 p.SetPlant(this);
 
@@ -72,5 +73,10 @@ public class Plant : MonoBehaviour
     {
         ChomperPlant chomp = GameObject.FindAnyObjectByType<ChomperPlant>();
         if (chomp != null) chomp.Feed(this);
+    }
+
+    public void SetIsBeingHeld(bool b)
+    {
+        isBeingHeld = b;
     }
 }
