@@ -6,6 +6,7 @@ public class SellableObject : MonoBehaviour
 {
     [SerializeField] private int value = 1;
     private StatTracker ST;
+    private bool sellable = true;
 
     public void SetValue(int v)
     {
@@ -19,7 +20,18 @@ public class SellableObject : MonoBehaviour
 
     public void Sell()
     {
+        if (!sellable)
+        {
+            Debug.Log(name + " is not currently sellable");
+            return;
+        }
+        Debug.Log("Selling :" + name + " for a value of " + GetValue());
         ST.money += value;
+    }
+
+    public void SetIsSellable(bool b)
+    {
+        sellable = b;
     }
 
     private void Start()

@@ -17,15 +17,21 @@ public class Plant : MonoBehaviour
     public float[] satiationAmountsPerStage = { 2, 4, 8 };
     public float[] growTimePerStage = { 0, 5, 10 };
     public float[] waterNeededPerStage = { 10, 20, 30 };
-    public float[] valuePerStage = { 5, 6, 8, 10 };
+    public int[] valuePerStage = { 5, 6, 8, 10 };
     public GameObject[] stageModels;
+    public GameObject waterIndicator;
     public int currentStage = 0;
+
+    private SellableObject SO;
     // Start is called before the first frame update
     void Start()
     {
         RB = GetComponent<Rigidbody>();
         XRGrab = GetComponent<XRGrabInteractable>();
+        SO = GetComponent<SellableObject>();
+        SO.SetIsSellable(false);
         col = GetComponentInChildren<Collider>();
+        waterIndicator.SetActive(false);
         for (int i = 0; i < stageModels.Length; i++)
         {
             if (i > 0)
@@ -43,6 +49,18 @@ public class Plant : MonoBehaviour
             transform.position = transform.parent.position;
             transform.rotation = transform.parent.rotation;
         }
+
+        if (waterIndicator != null)
+        {
+            if (currentStage == stageModels.Length) waterIndicator.SetActive(false);
+            else if (water >= waterNeededPerStage[currentStage])
+            {
+                waterIndicator.SetActive(false);
+            } else
+            {
+                waterIndicator.SetActive(true);
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -59,6 +77,7 @@ public class Plant : MonoBehaviour
                 isInPot = true;
                 transform.parent = p.seedGrowPoint;
                 transform.position = transform.parent.position;
+                SO.SetIsSellable(true);
 
                 RB.isKinematic = false;
                 RB.velocity = Vector3.zero;
@@ -109,6 +128,8 @@ public class Plant : MonoBehaviour
             }
         }
 
+        SO.SetValue(valuePerStage[currentStage]);
+
         StartCoroutine(Grow());
     }
 
@@ -117,9 +138,11 @@ public class Plant : MonoBehaviour
         yield return new WaitForSecondsRealtime(growTimePerStage[currentStage]);
         while (water < waterNeededPerStage[currentStage])
         {
+
             yield return new WaitForSecondsRealtime(0.25f);
             continue;
         }
+        water = 0;
         SetStage(++currentStage);
     }
 }
