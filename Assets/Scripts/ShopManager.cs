@@ -48,6 +48,11 @@ public class ShopManager : MonoBehaviour
 
     public void SpawnAndFire(GameObject item, float force, int cost)
     {
+        if (cost > ST.money)
+        {
+            Debug.Log("not enough money for purchase");
+            return;
+        }
         Debug.Log("Spawning shop item: " + item.name);
         GameObject drop = Instantiate(item, spawnLocation.position, spawnLocation.rotation);
         Rigidbody RB = drop.GetComponent<Rigidbody>();
@@ -73,6 +78,11 @@ public class ShopManager : MonoBehaviour
 
     public void Upgrade(int i, int cost)
     {
+        if (cost > ST.money)
+        {
+            Debug.Log("not enough money for purchase");
+            return;
+        }
         if (i == 1)
         {
             ST.waterCanFireRate -= fireRatePerUpgrade;

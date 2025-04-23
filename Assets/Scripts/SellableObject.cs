@@ -27,6 +27,15 @@ public class SellableObject : MonoBehaviour
         }
         Debug.Log("Selling :" + name + " for a value of " + GetValue());
         ST.money += value;
+
+        if (transform.parent != null)
+        {
+            Destroy(transform.parent.gameObject);
+            //Destroy(gameObject);
+        } else
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void SetIsSellable(bool b)

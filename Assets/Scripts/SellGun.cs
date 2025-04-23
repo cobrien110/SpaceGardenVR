@@ -33,9 +33,7 @@ public class SellGun : MonoBehaviour
             SellableObject s = hit.transform.GetComponent<SellableObject>();
             if (s != null)
             {
-                
                 s.Sell();
-                Destroy(s.gameObject);
             }
         } else
         {

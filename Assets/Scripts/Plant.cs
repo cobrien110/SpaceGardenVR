@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 public class Plant : MonoBehaviour
@@ -18,9 +19,12 @@ public class Plant : MonoBehaviour
     public float[] growTimePerStage = { 0, 5, 10 };
     public float[] waterNeededPerStage = { 10, 20, 30 };
     public int[] valuePerStage = { 5, 6, 8, 10 };
+    public Vector3[] colSizePerStage = { };
+    private BoxCollider BC;
     public GameObject[] stageModels;
     public GameObject waterIndicator;
     public int currentStage = 0;
+    public Slider slider;
 
     private SellableObject SO;
     // Start is called before the first frame update
@@ -29,7 +33,8 @@ public class Plant : MonoBehaviour
         RB = GetComponent<Rigidbody>();
         XRGrab = GetComponent<XRGrabInteractable>();
         SO = GetComponent<SellableObject>();
-        SO.SetIsSellable(false);
+        BC = GetComponentInChildren<BoxCollider>();
+        //SO.SetIsSellable(false);
         col = GetComponentInChildren<Collider>();
         waterIndicator.SetActive(false);
         for (int i = 0; i < stageModels.Length; i++)
@@ -59,6 +64,8 @@ public class Plant : MonoBehaviour
             } else
             {
                 waterIndicator.SetActive(true);
+                slider.maxValue = waterNeededPerStage[currentStage];
+                slider.value = water;
             }
         }
     }
@@ -128,7 +135,9 @@ public class Plant : MonoBehaviour
             }
         }
 
+        SO.SetIsSellable(true);
         SO.SetValue(valuePerStage[currentStage]);
+        BC.size = colSizePerStage[currentStage];
 
         StartCoroutine(Grow());
     }
@@ -143,6 +152,6 @@ public class Plant : MonoBehaviour
             continue;
         }
         water = 0;
-        SetStage(++currentStage);
+        if (currentStage != stageModels.Length - 1) SetStage(++currentStage);
     }
 }

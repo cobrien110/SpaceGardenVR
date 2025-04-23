@@ -994,7 +994,7 @@ MonoBehaviour:
   range: 100
   shootLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 257
   shootOrigin: {fileID: 8877343146148083855}
   laser: {fileID: 2483309311542221653}
 --- !u!1 &7436273971247021562
