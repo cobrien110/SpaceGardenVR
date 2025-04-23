@@ -13,8 +13,12 @@ public class Plant : MonoBehaviour
     [SerializeField] private int water = 0;
     public bool isBeingHeld = false;
 
-    public int[] foodAmountsPerStage = { 2, 4, 8, 16};
-    public float[] satiationAmountsPerStage = { 2, 4, 8, 16};
+    public int[] foodAmountsPerStage = { 2, 4, 8 };
+    public float[] satiationAmountsPerStage = { 2, 4, 8 };
+    public float[] growTimePerStage = { 0, 5, 10 };
+    public float[] waterNeededPerStage = { 10, 20, 30 };
+    public float[] valuePerStage = { 5, 6, 8, 10 };
+    public GameObject[] stageModels;
     public int currentStage = 0;
     // Start is called before the first frame update
     void Start()
@@ -22,6 +26,13 @@ public class Plant : MonoBehaviour
         RB = GetComponent<Rigidbody>();
         XRGrab = GetComponent<XRGrabInteractable>();
         col = GetComponentInChildren<Collider>();
+        for (int i = 0; i < stageModels.Length; i++)
+        {
+            if (i > 0)
+            {
+                stageModels[i].SetActive(false);
+            }
+        }
     }
 
     // Update is called once per frame
@@ -30,6 +41,7 @@ public class Plant : MonoBehaviour
         if (isGrowing && transform.parent != null)
         {
             transform.position = transform.parent.position;
+            transform.rotation = transform.parent.rotation;
         }
     }
 
@@ -51,9 +63,12 @@ public class Plant : MonoBehaviour
                 RB.isKinematic = false;
                 RB.velocity = Vector3.zero;
                 RB.useGravity = false;
+                
                 //col.enabled = false;
 
                 XRGrab.enabled = false;
+
+                SetStage(1);
             }
         }
 
@@ -78,5 +93,33 @@ public class Plant : MonoBehaviour
     public void SetIsBeingHeld(bool b)
     {
         isBeingHeld = b;
+    }
+
+    public void SetStage(int num)
+    {
+        if (currentStage >= stageModels.Length) return;
+        for (int i = 0; i < stageModels.Length; i++)
+        {
+            if (i != num)
+            {
+                stageModels[i].SetActive(false);
+            } else
+            {
+                stageModels[i].SetActive(true);
+            }
+        }
+
+        StartCoroutine(Grow());
+    }
+
+    private IEnumerator Grow()
+    {
+        yield return new WaitForSecondsRealtime(growTimePerStage[currentStage]);
+        while (water < waterNeededPerStage[currentStage])
+        {
+            yield return new WaitForSecondsRealtime(0.25f);
+            continue;
+        }
+        SetStage(++currentStage);
     }
 }
