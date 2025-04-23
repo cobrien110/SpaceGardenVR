@@ -9,6 +9,7 @@ public class ChomperPlant : MonoBehaviour
     public float satiation = 5;
     public float maxSatiation = 10;
     public float defaultSatiation = 2.5f;
+    public GameObject mouthPoint;
     // Start is called before the first frame update
     void Start()
     {

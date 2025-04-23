@@ -7,7 +7,8 @@ public class SellableObject : MonoBehaviour
     [SerializeField] private int value = 1;
     private StatTracker ST;
     private bool sellable = true;
-
+    private Plant p;
+    
     public void SetValue(int v)
     {
         value = v;
@@ -28,14 +29,18 @@ public class SellableObject : MonoBehaviour
         Debug.Log("Selling :" + name + " for a value of " + GetValue());
         ST.money += value;
 
+        if (p != null)
+        {
+            p.ResetPot();
+        }
         if (transform.parent != null)
         {
-            Destroy(transform.parent.gameObject);
+            //Destroy(transform.parent.gameObject);
             //Destroy(gameObject);
-        } else
-        {
-            Destroy(gameObject);
-        }
+        } 
+
+        Destroy(gameObject);
+
     }
 
     public void SetIsSellable(bool b)
@@ -46,5 +51,6 @@ public class SellableObject : MonoBehaviour
     private void Start()
     {
         ST = GameObject.FindAnyObjectByType<StatTracker>();
+        p = GetComponent<Plant>();
     }
 }

@@ -38,7 +38,7 @@ public class Pot : MonoBehaviour
 
     public void Update()
     {
-        if (Vector3.Distance(transform.position, Chomp.transform.position) < rangeChomperEat && myPlant != null)
+        if (Vector3.Distance(transform.position, Chomp.mouthPoint.transform.position) < rangeChomperEat && myPlant != null)
         {
             myPlant.FeedToChomper();
             Destroy(parentObject);
