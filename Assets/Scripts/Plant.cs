@@ -25,6 +25,7 @@ public class Plant : MonoBehaviour
     public GameObject waterIndicator;
     public int currentStage = 0;
     public Slider slider;
+    private Pot p;
 
     private SellableObject SO;
     // Start is called before the first frame update
@@ -33,6 +34,7 @@ public class Plant : MonoBehaviour
         RB = GetComponent<Rigidbody>();
         XRGrab = GetComponent<XRGrabInteractable>();
         SO = GetComponent<SellableObject>();
+        SO.SetValue(valuePerStage[0]);
         BC = GetComponentInChildren<BoxCollider>();
         //SO.SetIsSellable(false);
         col = GetComponentInChildren<Collider>();
@@ -75,7 +77,7 @@ public class Plant : MonoBehaviour
         // Bury into pot
         if (other.tag.Equals("Dirt"))
         {
-            Pot p = other.GetComponent<Pot>();
+            p = other.GetComponent<Pot>();
             if (p != null && !p.GetPlant() && !isBeingHeld)
             {
                 p.SetPlant(this);
@@ -153,5 +155,10 @@ public class Plant : MonoBehaviour
         }
         water = 0;
         if (currentStage != stageModels.Length - 1) SetStage(++currentStage);
+    }
+
+    public void ResetPot()
+    {
+        if (p != null) p.SetPlant(null);
     }
 }
