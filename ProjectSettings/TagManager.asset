@@ -8,6 +8,8 @@ TagManager:
   - Dirt
   - Water
   - Chomper
+  - LeafEmpty
+  - FlowerEmpty
   layers:
   - Default
   - TransparentFX
