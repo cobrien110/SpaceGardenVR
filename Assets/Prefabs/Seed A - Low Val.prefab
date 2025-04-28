@@ -20,6 +20,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1659441929441510934, guid: 3fcfd834550b49f4490df7adecdac437, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2825359779246614675, guid: 3fcfd834550b49f4490df7adecdac437, type: 3}
       propertyPath: m_Name
       value: Seed A - Low Val
@@ -98,6 +102,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7453934676445607251, guid: 3fcfd834550b49f4490df7adecdac437, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8941655727978694315, guid: 3fcfd834550b49f4490df7adecdac437, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

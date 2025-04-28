@@ -605,7 +605,7 @@ GameObject:
   - component: {fileID: 5209792831320461222}
   m_Layer: 0
   m_Name: Seed
-  m_TagString: Untagged
+  m_TagString: Plant
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1010,7 +1010,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5966653889726899406
 Transform:
   m_ObjectHideFlags: 0
@@ -1636,7 +1636,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &871264989264167613
 Transform:
   m_ObjectHideFlags: 0
@@ -1893,6 +1893,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8128ca42d76636d4aa7dc38edc31fcaf, type: 3}
       propertyPath: m_Name
       value: Seedling
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8128ca42d76636d4aa7dc38edc31fcaf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

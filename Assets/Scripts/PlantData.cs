@@ -36,16 +36,17 @@ public class PlantData : MonoBehaviour
         SpawnStage(currentStage);
     }
 
-    public void AdvanceStage()
+    public void SetStage(int num)
     {
+        if (num == currentStage) return;
+        currentStage = num;
         if (currentStage >= stagePrefabs.Length - 1)
         {
             Debug.Log("Already at max stage.");
             return;
         }
-
-        currentStage++;
-        SpawnStage(currentStage);
+        Debug.Log("This gets called");
+        SpawnStage(num);
     }
 
     private void SpawnStage(int stageIndex)
@@ -55,23 +56,28 @@ public class PlantData : MonoBehaviour
 
         //Instantiate new stage
         currentPlant = Instantiate(stagePrefabs[stageIndex], transform.position, transform.rotation, transform);
+        
+        //Auto-assign empties by tag from each stage prefab
+        GameObject[] leafEmpties = FindTaggedEmpties(gameObject, "LeafEmpty");
 
+        GameObject[] flowerEmpties = FindTaggedEmpties(gameObject, "FlowerEmpty");
         //Assign material to plant
         AssignMaterial(currentPlant, customPlantMaterial);
 
         //Spawn leaves and flowers
-        GameObject[] leafEmpties = GetLeafEmpties(stageIndex);
-        GameObject[] flowerEmpties = GetFlowerEmpties(stageIndex);
 
         foreach (GameObject empty in leafEmpties)
         {
-            GameObject leaf = Instantiate(leafPrefab, empty.transform.position, empty.transform.rotation, currentPlant.transform);
+            GameObject leaf = Instantiate(leafPrefab, empty.transform.localPosition, empty.transform.localRotation, currentPlant.transform);
+            leaf.transform.localScale = empty.transform.localScale;
             AssignMaterial(leaf, customLeafMaterial);
         }
 
         foreach (GameObject empty in flowerEmpties)
         {
-            GameObject flower = Instantiate(flowerPrefab, empty.transform.position, empty.transform.rotation, currentPlant.transform);
+            GameObject flower = Instantiate(flowerPrefab, empty.transform.localPosition, empty.transform.localRotation, currentPlant.transform);
+            Debug.Log(gameObject);
+            flower.transform.localScale = empty.transform.localScale;
             AssignMaterial(flower, customFlowerMaterial);
         }
     }
@@ -110,5 +116,22 @@ public class PlantData : MonoBehaviour
             3 => flowerEmptiesStage4,
             _ => new GameObject[0],
         };
+    }
+    private GameObject[] FindTaggedEmpties(GameObject plantPrefab, string tag)
+    {
+        Transform[] allChildren = plantPrefab.GetComponentsInChildren<Transform>(true);
+        List<GameObject> taggedEmpties = new();
+
+        foreach (Transform child in allChildren)
+        {
+            if (child.CompareTag(tag))
+            {
+
+                taggedEmpties.Add(child.gameObject);
+            }
+
+        }
+
+        return taggedEmpties.ToArray();
     }
 }
