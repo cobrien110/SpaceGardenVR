@@ -40,7 +40,7 @@ public class PlantData : MonoBehaviour
     {
         if (num == currentStage) return;
         currentStage = num;
-        if (currentStage >= stagePrefabs.Length - 1)
+        if (currentStage > stagePrefabs.Length - 1)
         {
             Debug.Log("Already at max stage.");
             return;
