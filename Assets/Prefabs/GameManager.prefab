@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6182189989322757911
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2580138609803890523}
+  - component: {fileID: 3822419292400609281}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2580138609803890523
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6182189989322757911}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3822419292400609281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6182189989322757911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c71057f423db3144ca6f711eb96f023f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  plantType0Stages:
+  - {fileID: 5930949982020141175, guid: 44190da9215b5204781e65a805297851, type: 3}
+  - {fileID: 6450096607684818434, guid: cc47a1858d8b3b746913d472ecdf17ed, type: 3}
+  - {fileID: 7490767207415581168, guid: 7e0b35669bc4ac246b8bbc6f0b8d0ab6, type: 3}
+  - {fileID: 6103975708292394534, guid: 68d04c078f9f0aa44a6020946273d3aa, type: 3}
+  plantType1Stages:
+  - {fileID: 5930949982020141175, guid: 44190da9215b5204781e65a805297851, type: 3}
+  - {fileID: 5258808899442634115, guid: 72cfa4ed3cf36264dbcb97a7b3509607, type: 3}
+  - {fileID: 774772065692179253, guid: 1b8d5ab8336da424494b55827f8643de, type: 3}
+  - {fileID: 4979985986920103903, guid: 7bd583fdf68318347acebebe4f233e02, type: 3}
+  plantType2Stages:
+  - {fileID: 5930949982020141175, guid: 44190da9215b5204781e65a805297851, type: 3}
+  - {fileID: 3779527711804713432, guid: 11c6d9f9762386e489ea832c664b1f0e, type: 3}
+  - {fileID: 4535850001487407710, guid: b0bb921d36ea6c74d82ed7365c0545cd, type: 3}
+  - {fileID: 3488418196839586517, guid: d704bbcbeceb7b845ad93106cc3a73e8, type: 3}
+  leafTypes:
+  - {fileID: 2646000631988841116, guid: 1abced6b403012c4f9f4259c58756c4b, type: 3}
+  - {fileID: 6580312697116792860, guid: 0eab20851ce529249985076bd8700fe3, type: 3}
+  flowerTypes:
+  - {fileID: 919132149155446097, guid: 30cebf0c53905a6418937d1cff516881, type: 3}
+  detailMaps:
+  - {fileID: 2800000, guid: 1a8272884f47710428b69e5958292c4d, type: 3}
+  - {fileID: 2800000, guid: 1a4b028be48f08048b53f87afe250cf2, type: 3}
+  - {fileID: 2800000, guid: 1857a31ab6404b544af0a35aecfa85f9, type: 3}
+  colorMaps:
+  - {fileID: 2800000, guid: 19a203154c1b04143b8e7166a4d053a3, type: 3}
+  - {fileID: 2800000, guid: 7e735b45ea0100946a8b511d8cb0e2ec, type: 3}
+  - {fileID: 2800000, guid: dbae1c1b13d8c3a49a535fa98c0f2c65, type: 3}
+  basePlantMaterial: {fileID: 2100000, guid: 2d0f26a1c7e7da64893f0205b4b001b4, type: 2}
+  baseLeafMaterial: {fileID: 2100000, guid: 2d0f26a1c7e7da64893f0205b4b001b4, type: 2}
+  baseFlowerMaterial: {fileID: 2100000, guid: 2d0f26a1c7e7da64893f0205b4b001b4, type: 2}

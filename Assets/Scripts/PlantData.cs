@@ -68,16 +68,16 @@ public class PlantData : MonoBehaviour
 
         foreach (GameObject empty in leafEmpties)
         {
-            GameObject leaf = Instantiate(leafPrefab, empty.transform.localPosition, empty.transform.localRotation, currentPlant.transform);
-            leaf.transform.localScale = empty.transform.localScale;
+            GameObject leaf = Instantiate(leafPrefab, empty.transform);
+            //leaf.transform.localScale = empty.transform.localScale;
             AssignMaterial(leaf, customLeafMaterial);
         }
 
         foreach (GameObject empty in flowerEmpties)
         {
-            GameObject flower = Instantiate(flowerPrefab, empty.transform.localPosition, empty.transform.localRotation, currentPlant.transform);
+            GameObject flower = Instantiate(flowerPrefab, empty.transform);
             Debug.Log(gameObject);
-            flower.transform.localScale = empty.transform.localScale;
+            //flower.transform.localScale = empty.transform.localScale;
             AssignMaterial(flower, customFlowerMaterial);
         }
     }
