@@ -26,6 +26,7 @@ public class Plant : MonoBehaviour
     public int currentStage = 0;
     public Slider slider;
     private Pot p;
+    private PlantData PD;
 
     private SellableObject SO;
     // Start is called before the first frame update
@@ -77,6 +78,7 @@ public class Plant : MonoBehaviour
         // Bury into pot
         if (other.tag.Equals("Dirt"))
         {
+            PD = GetComponent<PlantData>();
             p = other.GetComponent<Pot>();
             if (p != null && !p.GetPlant() && !isBeingHeld)
             {
@@ -126,7 +128,8 @@ public class Plant : MonoBehaviour
     public void SetStage(int num)
     {
         if (currentStage >= stageModels.Length) return;
-        for (int i = 0; i < stageModels.Length; i++)
+        // setting the correct model
+        /*for (int i = 0; i < stageModels.Length; i++)
         {
             if (i != num)
             {
@@ -135,8 +138,9 @@ public class Plant : MonoBehaviour
             {
                 stageModels[i].SetActive(true);
             }
-        }
+        }*/
 
+        PD.SetStage(num);
         SO.SetIsSellable(true);
         SO.SetValue(valuePerStage[currentStage]);
         BC.size = colSizePerStage[currentStage];

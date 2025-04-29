@@ -22,27 +22,17 @@ public class PlantFormation : MonoBehaviour
     public Material baseLeafMaterial;
     public Material baseFlowerMaterial;
 
-    public GameObject ConstructPlant()
+    public void ConstructPlant(GameObject seedling)
     {
         int plantTypeIndex = Random.Range(0, 3);
         int leafIndex = Random.Range(0, leafTypes.Length);
         int flowerIndex = Random.Range(0, flowerTypes.Length);
 
         GameObject[] selectedStages = GetStages(plantTypeIndex);
-        GameObject seedling = Instantiate(selectedStages[0], transform.position, Quaternion.identity);
+        //GameObject seedling = Instantiate(selectedStages[0], transform.position, Quaternion.identity);
         PlantData data = seedling.AddComponent<PlantData>();
         data.stagePrefabs = selectedStages;
 
-        //Auto-assign empties by tag from each stage prefab
-        data.leafEmptiesStage1 = FindTaggedEmpties(selectedStages[0], "LeafEmpty");
-        data.leafEmptiesStage2 = FindTaggedEmpties(selectedStages[1], "LeafEmpty");
-        data.leafEmptiesStage3 = FindTaggedEmpties(selectedStages[2], "LeafEmpty");
-        data.leafEmptiesStage4 = FindTaggedEmpties(selectedStages[3], "LeafEmpty");
-
-        data.flowerEmptiesStage1 = FindTaggedEmpties(selectedStages[0], "FlowerEmpty");
-        data.flowerEmptiesStage2 = FindTaggedEmpties(selectedStages[1], "FlowerEmpty");
-        data.flowerEmptiesStage3 = FindTaggedEmpties(selectedStages[2], "FlowerEmpty");
-        data.flowerEmptiesStage4 = FindTaggedEmpties(selectedStages[3], "FlowerEmpty");
 
         data.leafPrefab = leafTypes[leafIndex];
         data.flowerPrefab = flowerTypes[flowerIndex];
@@ -51,7 +41,6 @@ public class PlantFormation : MonoBehaviour
         data.customLeafMaterial = MakeMaterial(1);
         data.customFlowerMaterial = MakeMaterial(2);
 
-        return seedling;
     }
 
     private GameObject[] GetStages(int type)
@@ -65,19 +54,17 @@ public class PlantFormation : MonoBehaviour
         };
     }
 
-    private GameObject[] FindTaggedEmpties(GameObject plantPrefab, string tag)
+    private void Start()
     {
-        Transform[] allChildren = plantPrefab.GetComponentsInChildren<Transform>(true);
-        List<GameObject> taggedEmpties = new();
-
-        foreach (Transform child in allChildren)
+        GameObject[] seeds = GameObject.FindGameObjectsWithTag("Plant");
+        foreach (GameObject o in seeds)
         {
-            if (child.CompareTag(tag))
-                taggedEmpties.Add(child.gameObject);
+            ConstructPlant(o);
         }
 
-        return taggedEmpties.ToArray();
     }
+
+    
 
     private Material MakeMaterial(int type)
     {

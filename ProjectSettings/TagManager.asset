@@ -10,6 +10,7 @@ TagManager:
   - Chomper
   - LeafEmpty
   - FlowerEmpty
+  - Plant
   layers:
   - Default
   - TransparentFX
