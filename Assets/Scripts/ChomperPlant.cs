@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ChomperPlant : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class ChomperPlant : MonoBehaviour
     public float maxSatiation = 10;
     public float defaultSatiation = 2.5f;
     public GameObject mouthPoint;
+    public Slider slider;
+    public Image fill;
+    public Color[] fillColors;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +30,9 @@ public class ChomperPlant : MonoBehaviour
             hungerLevel--;
             Debug.Log("Hunger level decreased to: " + hungerLevel);
         }
+
+        SetFillColor();
+        slider.value = (float) hungerLevel / (float) maxHunger;
     }
 
     public void Feed(Plant p)
@@ -36,6 +43,24 @@ public class ChomperPlant : MonoBehaviour
         Destroy(p.gameObject);
 
         Debug.Log("Chomper Fed! He has " + hungerLevel + "hunger and is satiated for " + (int) satiation + "seconds.");
+    }
+
+    private void SetFillColor()
+    {
+        if (satiation <= 1 && (int) Time.time % 2 == 0)
+        {
+            fill.color = fillColors[1];
+        } else if ((float)hungerLevel / (float)maxHunger < .2f)
+        {
+            fill.color = fillColors[3];
+        }
+        else if ((float) hungerLevel / (float) maxHunger < .5f)
+        {
+            fill.color = fillColors[2];
+        } else
+        {
+            fill.color = fillColors[0];
+        }
     }
 
 }

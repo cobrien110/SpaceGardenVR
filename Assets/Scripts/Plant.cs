@@ -8,6 +8,7 @@ public class Plant : MonoBehaviour
 {
     private Rigidbody RB;
     private XRGrabInteractable XRGrab;
+    [SerializeField] private GameObject tagObj;
     [SerializeField] private bool isGrowing = false;
     [SerializeField] private bool isInPot = false;
     private Collider col;
@@ -89,6 +90,7 @@ public class Plant : MonoBehaviour
                 transform.parent = p.seedGrowPoint;
                 transform.position = transform.parent.position;
                 SO.SetIsSellable(true);
+                tagObj.SetActive(true);
 
                 RB.isKinematic = false;
                 RB.velocity = Vector3.zero;

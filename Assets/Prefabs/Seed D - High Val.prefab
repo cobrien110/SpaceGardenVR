@@ -22,7 +22,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2825359779246614675, guid: 3fcfd834550b49f4490df7adecdac437, type: 3}
       propertyPath: m_Name
-      value: Seed C - High Val
+      value: Seed D - High Val
       objectReference: {fileID: 0}
     - target: {fileID: 5162543651277522797, guid: 3fcfd834550b49f4490df7adecdac437, type: 3}
       propertyPath: valuePerStage.Array.data[0]
@@ -55,6 +55,10 @@ PrefabInstance:
     - target: {fileID: 5162543651277522797, guid: 3fcfd834550b49f4490df7adecdac437, type: 3}
       propertyPath: waterNeededPerStage.Array.data[2]
       value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 7156368720562875792, guid: 3fcfd834550b49f4490df7adecdac437, type: 3}
+      propertyPath: m_text
+      value: Augora
       objectReference: {fileID: 0}
     - target: {fileID: 7453934676445607251, guid: 3fcfd834550b49f4490df7adecdac437, type: 3}
       propertyPath: m_LocalPosition.x

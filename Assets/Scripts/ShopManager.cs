@@ -11,10 +11,12 @@ public class ShopManager : MonoBehaviour
     private StatTracker ST;
     public float fireRatePerUpgrade = 0.05f;
     public TextMeshProUGUI text;
+    private PlantFormation PF;
     // Start is called before the first frame update
     void Start()
     {
         ST = GameObject.FindAnyObjectByType<StatTracker>();
+        PF = GameObject.FindAnyObjectByType<PlantFormation>();
     }
 
     // Update is called once per frame
@@ -27,6 +29,12 @@ public class ShopManager : MonoBehaviour
     {
         Debug.Log("Spawning shop item: " + item.name);
         GameObject drop = Instantiate(item, spawnLocation.position, spawnLocation.rotation);
+
+        if (drop.GetComponent<Plant>())
+        {
+            PF.ConstructPlant(drop);
+        }
+
         Rigidbody RB = drop.GetComponent<Rigidbody>();
         if (RB == null) return;
 
@@ -55,6 +63,12 @@ public class ShopManager : MonoBehaviour
         }
         Debug.Log("Spawning shop item: " + item.name);
         GameObject drop = Instantiate(item, spawnLocation.position, spawnLocation.rotation);
+
+        if (drop.GetComponent<Plant>())
+        {
+            PF.ConstructPlant(drop);
+        }
+
         Rigidbody RB = drop.GetComponent<Rigidbody>();
         if (RB == null) return;
 

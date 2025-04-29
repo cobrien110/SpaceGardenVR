@@ -64,6 +64,10 @@ PrefabInstance:
       propertyPath: satiationAmountsPerStage.Array.data[3]
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 7156368720562875792, guid: 3fcfd834550b49f4490df7adecdac437, type: 3}
+      propertyPath: m_text
+      value: Sprig
+      objectReference: {fileID: 0}
     - target: {fileID: 7453934676445607251, guid: 3fcfd834550b49f4490df7adecdac437, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
