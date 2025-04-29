@@ -55,6 +55,7 @@ MonoBehaviour:
   maxSatiation: 60
   defaultSatiation: 1
   mouthPoint: {fileID: 1381595214003489452}
+  rangeChomperEat: 2
   slider: {fileID: 6112161350016004709}
   fill: {fileID: 3364954462393881081}
   fillColors:

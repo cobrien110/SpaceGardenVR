@@ -11,6 +11,7 @@ public class ChomperPlant : MonoBehaviour
     public float maxSatiation = 10;
     public float defaultSatiation = 2.5f;
     public GameObject mouthPoint;
+    public float rangeChomperEat = 1.5f;
     public Slider slider;
     public Image fill;
     public Color[] fillColors;
@@ -61,6 +62,12 @@ public class ChomperPlant : MonoBehaviour
         {
             fill.color = fillColors[0];
         }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.white;
+        Gizmos.DrawWireSphere(mouthPoint.transform.position, rangeChomperEat);
     }
 
 }
