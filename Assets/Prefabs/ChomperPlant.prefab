@@ -49,13 +49,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47ba45cee87eb9f4b9730e76213ca7c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hungerLevel: 50
+  hungerLevel: 80
   maxHunger: 100
   satiation: 30
   maxSatiation: 60
   defaultSatiation: 1
   mouthPoint: {fileID: 1381595214003489452}
   slider: {fileID: 6112161350016004709}
+  fill: {fileID: 3364954462393881081}
+  fillColors:
+  - {r: 0, g: 1, b: 0.07058824, a: 1}
+  - {r: 1, g: 0, b: 0.11372549, a: 1}
+  - {r: 1, g: 0.6039216, b: 0, a: 1}
+  - {r: 0, g: 0, b: 0, a: 1}
 --- !u!1 &991405749261659176
 GameObject:
   m_ObjectHideFlags: 0
@@ -89,7 +95,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.25, y: 0}
   m_AnchorMax: {x: 0.75, y: 1}
-  m_AnchoredPosition: {x: 0, y: -5}
+  m_AnchoredPosition: {x: 0, y: -11.7}
   m_SizeDelta: {x: 0, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1242256403618235182
@@ -802,7 +808,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.9626852, b: 0, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.068965435, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -814,7 +820,7 @@ MonoBehaviour:
   m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 1
-  m_FillAmount: 0
+  m_FillAmount: 0.509
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -1424,7 +1430,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.509
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
