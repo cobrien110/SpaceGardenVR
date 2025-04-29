@@ -21,6 +21,7 @@ public class ShopButton : MonoBehaviour
     {
         if (SM == null) SM = GameObject.FindAnyObjectByType<ShopManager>();
         if (text != null) text.text = message + cost;
+        MR = GetComponent<MeshRenderer>();
         timer = delay;
     }
 

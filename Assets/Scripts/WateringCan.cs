@@ -18,12 +18,16 @@ public class WateringCan : MonoBehaviour
     private float waterCurVol;
     public float waterVolRate = 1.75f;
     private bool isTipped = false;
+    private Vector3 baseScale;
+    private Vector3 socketScale;
 
     private void Start()
     {
         ST = GameObject.FindAnyObjectByType<StatTracker>();
         waterCurVol = 0f;
         AS = GetComponent<AudioSource>();
+        baseScale = transform.localScale;
+        socketScale = baseScale * .5f;
     }
     // Update is called once per frame
     void FixedUpdate()
@@ -39,6 +43,7 @@ public class WateringCan : MonoBehaviour
     private void Update()
     {
         ChangeVol();
+        CheckForSocket();
     }
 
     private void GetStats()
@@ -110,5 +115,27 @@ public class WateringCan : MonoBehaviour
         waterCurVol = Mathf.Clamp(waterCurVol, 0f, 1f);
 
         AS.volume = waterCurVol;
+    }
+
+    private void CheckForSocket()
+    {
+        bool hasSocket = false;
+        foreach (Transform child in transform)
+        {
+            //Debug.Log(child.name);
+            if (child.name.Contains("Socket"))
+            {
+                //Debug.Log("Found Socket in gun transform");
+                hasSocket = true;
+            }
+        }
+
+        if (hasSocket)
+        {
+            transform.localScale = socketScale;
+        } else
+        {
+            transform.localScale = baseScale;
+        }
     }
 }

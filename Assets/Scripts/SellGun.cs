@@ -13,12 +13,16 @@ public class SellGun : MonoBehaviour
     [SerializeField] private Material[] laserMats;
     private AudioSource AS;
     [SerializeField] private TextMeshPro text;
+    private Vector3 baseScale;
+    private Vector3 socketScale;
 
     // Start is called before the first frame update
     void Start()
     {
         SetLaser(false);
         AS = GetComponent<AudioSource>();
+        baseScale = transform.localScale;
+        socketScale = baseScale * .5f;
     }
 
     private void Update()
@@ -82,15 +86,25 @@ public class SellGun : MonoBehaviour
     private void CheckForSocket()
     {
         if (!laser.activeInHierarchy) return;
+        bool hasSocket = false;
         foreach (Transform child in transform)
         {
             //Debug.Log(child.name);
             if (child.name.Contains("Socket"))
             {
                 //Debug.Log("Found Socket in gun transform");
-                SetLaser(false);
-                return;
+                hasSocket = true;
             }
+        }
+
+        if (hasSocket)
+        {
+            transform.localScale = socketScale;
+            SetLaser(false);
+        }
+        else
+        {
+            transform.localScale = baseScale;
         }
     }
 }
