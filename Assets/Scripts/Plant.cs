@@ -29,6 +29,9 @@ public class Plant : MonoBehaviour
     private Pot p;
     private PlantData PD;
 
+    public AudioSource AS;
+    public AudioClip[] clips;
+
     private SellableObject SO;
     // Start is called before the first frame update
     void Start()
@@ -41,6 +44,7 @@ public class Plant : MonoBehaviour
         //SO.SetIsSellable(false);
         col = GetComponentInChildren<Collider>();
         waterIndicator.SetActive(false);
+        AS = GetComponent<AudioSource>();
         for (int i = 0; i < stageModels.Length; i++)
         {
             if (i > 0)
@@ -84,6 +88,7 @@ public class Plant : MonoBehaviour
             if (p != null && !p.GetPlant() && !isBeingHeld)
             {
                 p.SetPlant(this);
+                PlaySound();
 
                 isGrowing = true;
                 isInPot = true;
@@ -125,6 +130,12 @@ public class Plant : MonoBehaviour
     public void SetIsBeingHeld(bool b)
     {
         isBeingHeld = b;
+    }
+
+    private void PlaySound()
+    {
+        AS.clip = clips[Random.Range(0, clips.Length)];
+        AS.Play();
     }
 
     public void SetStage(int num)

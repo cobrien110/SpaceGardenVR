@@ -15,10 +15,13 @@ public class ChomperPlant : MonoBehaviour
     public Slider slider;
     public Image fill;
     public Color[] fillColors;
+
+    private AudioSource AS;
+    public AudioClip[] clips;
     // Start is called before the first frame update
     void Start()
     {
-        
+        AS = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -28,7 +31,7 @@ public class ChomperPlant : MonoBehaviour
         if (satiation <= 0)
         {
             satiation = defaultSatiation;
-            hungerLevel--;
+            if (hungerLevel > 0) hungerLevel--;
             Debug.Log("Hunger level decreased to: " + hungerLevel);
         }
 
@@ -42,6 +45,7 @@ public class ChomperPlant : MonoBehaviour
         satiation += p.satiationAmountsPerStage[p.currentStage];
         if (satiation > maxSatiation) satiation = maxSatiation;
         Destroy(p.gameObject);
+        PlaySound();
 
         Debug.Log("Chomper Fed! He has " + hungerLevel + "hunger and is satiated for " + (int) satiation + "seconds.");
     }
@@ -68,6 +72,12 @@ public class ChomperPlant : MonoBehaviour
     {
         Gizmos.color = Color.white;
         Gizmos.DrawWireSphere(mouthPoint.transform.position, rangeChomperEat);
+    }
+
+    private void PlaySound()
+    {
+        AS.clip = clips[Random.Range(0, clips.Length)];
+        AS.Play();
     }
 
 }

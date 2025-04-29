@@ -798,7 +798,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.89
+  m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -821,6 +821,10 @@ MonoBehaviour:
   waterUpgrade: 0
   text: {fileID: 6953346212348157850}
   message: 'SEED C: $'
+  mats:
+  - {fileID: 2100000, guid: 4703691c81ac80949b9c93064f187fc2, type: 2}
+  - {fileID: 2100000, guid: 7a0b2ea3a4e4bef4a95e4bfd952605cc, type: 2}
+  - {fileID: 2100000, guid: 210f0276a3aa15a4ea6ec100c5cd171c, type: 2}
 --- !u!54 &5365975355912197167
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2054,7 +2058,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.89
+  m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -2077,6 +2081,10 @@ MonoBehaviour:
   waterUpgrade: 0
   text: {fileID: 2169230145098892261}
   message: 'SEED B: $'
+  mats:
+  - {fileID: 2100000, guid: 4703691c81ac80949b9c93064f187fc2, type: 2}
+  - {fileID: 2100000, guid: 7a0b2ea3a4e4bef4a95e4bfd952605cc, type: 2}
+  - {fileID: 2100000, guid: 210f0276a3aa15a4ea6ec100c5cd171c, type: 2}
 --- !u!54 &6185207796296846859
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2422,7 +2430,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.89
+  m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -2445,6 +2453,10 @@ MonoBehaviour:
   waterUpgrade: 0
   text: {fileID: 932157601904069969}
   message: 'SEED A: $'
+  mats:
+  - {fileID: 2100000, guid: 4703691c81ac80949b9c93064f187fc2, type: 2}
+  - {fileID: 2100000, guid: 7a0b2ea3a4e4bef4a95e4bfd952605cc, type: 2}
+  - {fileID: 2100000, guid: 210f0276a3aa15a4ea6ec100c5cd171c, type: 2}
 --- !u!54 &6226838709951879787
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2832,7 +2844,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.89
+  m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -2855,6 +2867,10 @@ MonoBehaviour:
   waterUpgrade: 0
   text: {fileID: 4949637127917415916}
   message: 'POT: $'
+  mats:
+  - {fileID: 2100000, guid: 4703691c81ac80949b9c93064f187fc2, type: 2}
+  - {fileID: 2100000, guid: 7a0b2ea3a4e4bef4a95e4bfd952605cc, type: 2}
+  - {fileID: 2100000, guid: 210f0276a3aa15a4ea6ec100c5cd171c, type: 2}
 --- !u!54 &2055005945531560002
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3788,6 +3804,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8142688449936395352}
   - component: {fileID: 7114913770297159310}
+  - component: {fileID: 7730352177859245298}
   m_Layer: 0
   m_Name: ShopMachine
   m_TagString: Untagged
@@ -3837,6 +3854,102 @@ MonoBehaviour:
   launchForce: 0.5
   fireRatePerUpgrade: 0.05
   text: {fileID: 1779519359510831664}
+--- !u!82 &7730352177859245298
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6974876433293400946}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 6d6216d1c14d7ee4c81a3852c9d0b1f1, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &7184523319115983469
 GameObject:
   m_ObjectHideFlags: 0
@@ -3975,7 +4088,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.89
+  m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -3998,6 +4111,10 @@ MonoBehaviour:
   waterUpgrade: 1
   text: {fileID: 2250849871252338840}
   message: 'FireRate: $'
+  mats:
+  - {fileID: 2100000, guid: 4703691c81ac80949b9c93064f187fc2, type: 2}
+  - {fileID: 2100000, guid: 7a0b2ea3a4e4bef4a95e4bfd952605cc, type: 2}
+  - {fileID: 2100000, guid: 210f0276a3aa15a4ea6ec100c5cd171c, type: 2}
 --- !u!54 &1461649098824880724
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4163,7 +4280,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.89
+  m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -4186,6 +4303,10 @@ MonoBehaviour:
   waterUpgrade: 2
   text: {fileID: 7405384888117741596}
   message: 'WaterAmount: $'
+  mats:
+  - {fileID: 2100000, guid: 4703691c81ac80949b9c93064f187fc2, type: 2}
+  - {fileID: 2100000, guid: 7a0b2ea3a4e4bef4a95e4bfd952605cc, type: 2}
+  - {fileID: 2100000, guid: 210f0276a3aa15a4ea6ec100c5cd171c, type: 2}
 --- !u!54 &4133564997255839826
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4844,7 +4965,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.89
+  m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -4867,6 +4988,10 @@ MonoBehaviour:
   waterUpgrade: 0
   text: {fileID: 7318803917375811660}
   message: 'SEED D: $'
+  mats:
+  - {fileID: 2100000, guid: 4703691c81ac80949b9c93064f187fc2, type: 2}
+  - {fileID: 2100000, guid: 7a0b2ea3a4e4bef4a95e4bfd952605cc, type: 2}
+  - {fileID: 2100000, guid: 210f0276a3aa15a4ea6ec100c5cd171c, type: 2}
 --- !u!54 &1231559134907905209
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5221,7 +5346,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.89
+  m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -5244,6 +5369,10 @@ MonoBehaviour:
   waterUpgrade: 0
   text: {fileID: 1900688642627133401}
   message: 'SUPER SEED: $'
+  mats:
+  - {fileID: 2100000, guid: 4703691c81ac80949b9c93064f187fc2, type: 2}
+  - {fileID: 2100000, guid: 7a0b2ea3a4e4bef4a95e4bfd952605cc, type: 2}
+  - {fileID: 2100000, guid: 210f0276a3aa15a4ea6ec100c5cd171c, type: 2}
 --- !u!54 &6388749900665517151
 Rigidbody:
   m_ObjectHideFlags: 0

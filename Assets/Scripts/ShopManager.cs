@@ -12,11 +12,13 @@ public class ShopManager : MonoBehaviour
     public float fireRatePerUpgrade = 0.05f;
     public TextMeshProUGUI text;
     private PlantFormation PF;
+    private AudioSource AS;
     // Start is called before the first frame update
     void Start()
     {
         ST = GameObject.FindAnyObjectByType<StatTracker>();
         PF = GameObject.FindAnyObjectByType<PlantFormation>();
+        AS = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -52,6 +54,8 @@ public class ShopManager : MonoBehaviour
         Vector3 finalForce = variedDir.normalized * launchForce;
 
         RB.AddForce(finalForce, ForceMode.Impulse); // optional: use Impulse for instant push
+
+        PlaySound();
     }
 
     public void SpawnAndFire(GameObject item, float force, int cost)
@@ -88,6 +92,7 @@ public class ShopManager : MonoBehaviour
         RB.AddForce(finalForce, ForceMode.Impulse); // optional: use Impulse for instant push
 
         ST.money -= cost;
+        PlaySound();
     }
 
     public void Upgrade(int i, int cost)
@@ -107,5 +112,15 @@ public class ShopManager : MonoBehaviour
         }
 
         ST.money -= cost;
+        PlaySound();
+    }
+
+    private void PlaySound()
+    {
+        if (!AS.isPlaying)
+        {
+            AS.pitch = Random.Range(0.9f, 1.1f);
+            AS.Play();
+        }
     }
 }

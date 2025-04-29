@@ -13,10 +13,17 @@ public class WateringCan : MonoBehaviour
     [SerializeField] private float waterForce = 0.5f;
     private float timer = 0f;
     private StatTracker ST;
+    private AudioSource AS;
+    public float waterMaxVol = 1f;
+    private float waterCurVol;
+    public float waterVolRate = 1.75f;
+    private bool isTipped = false;
 
     private void Start()
     {
         ST = GameObject.FindAnyObjectByType<StatTracker>();
+        waterCurVol = 0f;
+        AS = GetComponent<AudioSource>();
     }
     // Update is called once per frame
     void FixedUpdate()
@@ -26,6 +33,12 @@ public class WateringCan : MonoBehaviour
         {
             SpawnWater();
         }
+        
+    }
+
+    private void Update()
+    {
+        ChangeVol();
     }
 
     private void GetStats()
@@ -47,9 +60,11 @@ public class WateringCan : MonoBehaviour
 
         if (xRot >= rotThreshold)
         {
+            isTipped = true;
             return true;
         }
         timer = 0f;
+        isTipped = false;
         return false;
     }
 
@@ -80,5 +95,20 @@ public class WateringCan : MonoBehaviour
                 RB.AddForce(finalForce, ForceMode.Impulse); // optional: use Impulse for instant push
             }
         }
+    }
+
+    private void ChangeVol()
+    {
+        Debug.Log("isTipped = " + isTipped);
+        if (isTipped)
+        {
+            waterCurVol += Time.deltaTime * waterVolRate;
+        } else
+        {
+            waterCurVol -= Time.deltaTime * waterVolRate;
+        }
+        waterCurVol = Mathf.Clamp(waterCurVol, 0f, 1f);
+
+        AS.volume = waterCurVol;
     }
 }

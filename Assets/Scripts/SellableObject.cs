@@ -48,6 +48,11 @@ public class SellableObject : MonoBehaviour
         sellable = b;
     }
 
+    public bool GetIsSellable()
+    {
+        return sellable;
+    }
+
     private void Start()
     {
         ST = GameObject.FindAnyObjectByType<StatTracker>();
