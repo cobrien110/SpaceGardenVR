@@ -16,6 +16,8 @@ public class ChomperPlant : MonoBehaviour
     public Image fill;
     public Color[] fillColors;
 
+    [SerializeField] private Animator anim;
+
     private AudioSource AS;
     public AudioClip[] clips;
     // Start is called before the first frame update
@@ -28,12 +30,14 @@ public class ChomperPlant : MonoBehaviour
     void Update()
     {
         satiation -= Time.deltaTime;
+
         if (satiation <= 0)
         {
             satiation = defaultSatiation;
             if (hungerLevel > 0) hungerLevel--;
             Debug.Log("Hunger level decreased to: " + hungerLevel);
         }
+        anim.SetFloat("hungerLevel", hungerLevel);
 
         SetFillColor();
         slider.value = (float) hungerLevel / (float) maxHunger;
@@ -41,6 +45,10 @@ public class ChomperPlant : MonoBehaviour
 
     public void Feed(Plant p)
     {
+        Debug.Log("ISHOULDBEEATING");
+        anim.ResetTrigger("Feeding");
+        anim.SetTrigger("Feeding");
+
         hungerLevel += p.foodAmountsPerStage[p.currentStage];
         satiation += p.satiationAmountsPerStage[p.currentStage];
         if (satiation > maxSatiation) satiation = maxSatiation;
@@ -48,6 +56,7 @@ public class ChomperPlant : MonoBehaviour
         PlaySound();
 
         Debug.Log("Chomper Fed! He has " + hungerLevel + "hunger and is satiated for " + (int) satiation + "seconds.");
+        
     }
 
     private void SetFillColor()

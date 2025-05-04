@@ -28,7 +28,7 @@ public class PlantData : MonoBehaviour
     public Material customLeafMaterial;
     public Material customFlowerMaterial;
 
-    private int currentStage = 0; //Starts at 0 (Stage 1)
+    public int currentStage = 0; //Starts at 0 (Stage 1)
     private GameObject currentPlant;
 
     public void Start()
