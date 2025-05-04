@@ -56,22 +56,6 @@ PrefabInstance:
       propertyPath: waterNeededPerStage.Array.data[2]
       value: 40
       objectReference: {fileID: 0}
-    - target: {fileID: 5162543651277522797, guid: 3fcfd834550b49f4490df7adecdac437, type: 3}
-      propertyPath: satiationAmountsPerStage.Array.data[0]
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 5162543651277522797, guid: 3fcfd834550b49f4490df7adecdac437, type: 3}
-      propertyPath: satiationAmountsPerStage.Array.data[1]
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 5162543651277522797, guid: 3fcfd834550b49f4490df7adecdac437, type: 3}
-      propertyPath: satiationAmountsPerStage.Array.data[2]
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 5162543651277522797, guid: 3fcfd834550b49f4490df7adecdac437, type: 3}
-      propertyPath: satiationAmountsPerStage.Array.data[3]
-      value: 30
-      objectReference: {fileID: 0}
     - target: {fileID: 7156368720562875792, guid: 3fcfd834550b49f4490df7adecdac437, type: 3}
       propertyPath: m_text
       value: Floana

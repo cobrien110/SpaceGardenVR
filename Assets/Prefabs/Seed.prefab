@@ -825,12 +825,12 @@ MonoBehaviour:
   isInPot: 0
   water: 0
   isBeingHeld: 0
-  foodAmountsPerStage: 02000000040000000800000010000000
+  foodAmountsPerStage: 050000000a0000001900000028000000
   satiationAmountsPerStage:
-  - 2
-  - 4
-  - 8
-  - 16
+  - 45
+  - 50
+  - 55
+  - 65
   growTimePerStage:
   - 0
   - 5
@@ -881,7 +881,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.1
+  m_Radius: 0.175
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5209792831320461222
 MonoBehaviour:

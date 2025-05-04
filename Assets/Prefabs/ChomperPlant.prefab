@@ -28,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.024, y: -0.423, z: 2.5011442}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.8309, y: 1.8309, z: 1.8309}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4697091320797339079}
@@ -50,13 +50,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47ba45cee87eb9f4b9730e76213ca7c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hungerLevel: 80
-  maxHunger: 100
-  satiation: 30
-  maxSatiation: 60
+  hungerLevel: 150
+  maxHunger: 150
+  satiation: 120
+  maxSatiation: 120
   defaultSatiation: 1
   mouthPoint: {fileID: 1381595214003489452}
-  rangeChomperEat: 2
+  rangeChomperEat: 1.25
   slider: {fileID: 6112161350016004709}
   fill: {fileID: 3364954462393881081}
   fillColors:
@@ -303,7 +303,7 @@ Transform:
   m_GameObject: {fileID: 1381595214003489452}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.863, y: 1.567, z: 0}
+  m_LocalPosition: {x: -1.136, y: 1.403, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
