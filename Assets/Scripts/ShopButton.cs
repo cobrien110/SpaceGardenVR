@@ -16,6 +16,9 @@ public class ShopButton : MonoBehaviour
     private float timer = 0f;
     private MeshRenderer MR;
     public Material[] mats;
+    private AudioSource AS;
+    public AudioClip[] sounds;
+    private bool isInteractible = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +26,7 @@ public class ShopButton : MonoBehaviour
         if (text != null) text.text = message + cost;
         MR = GetComponent<MeshRenderer>();
         timer = delay;
+        AS = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -33,33 +37,59 @@ public class ShopButton : MonoBehaviour
             //SM.SpawnAndFire(itemToBuy, force);
         }
         if (timer < delay) timer += Time.deltaTime;
+
         if (timer >= delay)
         {
             if (MR.material != mats[0]) MR.material = mats[0];
-        } else if (timer > 0 && timer < 0.3f)
+            isInteractible = true;
+        } else if (timer > 0 && timer < 0.15f)
         {
             if (MR.material != mats[1]) MR.material = mats[1];
+            isInteractible = false;
         } else
         {
             if (MR.material != mats[2]) MR.material = mats[2];
+            isInteractible = false;
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player")) return;
-        if (timer < delay) return;
-        if (waterUpgrade == 0)
+        if (!isInteractible)
         {
-            if (itemToBuy == null) return;
-            SM.SpawnAndFire(itemToBuy, force, cost);
-        } else if (waterUpgrade == 1)
+            // play fail sound
+            if (AS != null && sounds[0] != null)
+            {
+                AS.clip = sounds[1];
+                AS.pitch = Random.Range(0.9f, 1.1f);
+                AS.volume = 1f;
+                AS.Play();
+            }
+        } else
         {
-            SM.Upgrade(1, cost);
-        } else if (waterUpgrade == 2)
-        {
-            SM.Upgrade(2, cost);
+            // play success sound
+            AS.clip = sounds[0];
+            AS.pitch = Random.Range(0.9f, 1.1f);
+            AS.volume = 0.5f;
+            AS.Play();
+
+            // buy upgrade / item
+            if (waterUpgrade == 0)
+            {
+                if (itemToBuy == null) return;
+                SM.SpawnAndFire(itemToBuy, force, cost);
+            }
+            else if (waterUpgrade == 1)
+            {
+                SM.Upgrade(1, cost);
+            }
+            else if (waterUpgrade == 2)
+            {
+                SM.Upgrade(2, cost);
+            }
+            timer = 0f;
         }
-        timer = 0f;
+        
     }
 }
