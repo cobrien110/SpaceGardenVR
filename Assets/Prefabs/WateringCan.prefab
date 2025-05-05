@@ -270,6 +270,7 @@ MonoBehaviour:
   waterForce: 0.5
   waterMaxVol: 1
   waterVolRate: 3
+  safeRange: 80.1
 --- !u!82 &3297670475189707733
 AudioSource:
   m_ObjectHideFlags: 0

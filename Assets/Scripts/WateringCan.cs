@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class WateringCan : MonoBehaviour
@@ -20,6 +21,8 @@ public class WateringCan : MonoBehaviour
     private bool isTipped = false;
     private Vector3 baseScale;
     private Vector3 socketScale;
+    private Vector3 startPos;
+    public float safeRange = 70f;
 
     private void Start()
     {
@@ -28,6 +31,7 @@ public class WateringCan : MonoBehaviour
         AS = GetComponent<AudioSource>();
         baseScale = transform.localScale;
         socketScale = baseScale * .5f;
+        startPos = transform.position;
     }
     // Update is called once per frame
     void FixedUpdate()
@@ -44,6 +48,7 @@ public class WateringCan : MonoBehaviour
     {
         ChangeVol();
         CheckForSocket();
+        CheckDistance();
     }
 
     private void GetStats()
@@ -73,6 +78,16 @@ public class WateringCan : MonoBehaviour
         return false;
     }
 
+    private void CheckDistance()
+    {
+        if (Vector3.Distance(transform.position, startPos) > safeRange)
+        {
+            transform.position = startPos;
+            transform.rotation = Quaternion.identity;
+            GetComponent<Rigidbody>().velocity = Vector3.zero;
+        } 
+    }
+
     private void SpawnWater()
     {
         timer += Time.deltaTime;
@@ -85,8 +100,8 @@ public class WateringCan : MonoBehaviour
                 Rigidbody RB = drop.GetComponent<Rigidbody>();
 
                 //get random force dir
-                float dirX = Random.Range(-dirRandomRange, dirRandomRange);
-                float dirY = Random.Range(-dirRandomRange, dirRandomRange);
+                float dirX = UnityEngine.Random.Range(-dirRandomRange, dirRandomRange);
+                float dirY = UnityEngine.Random.Range(-dirRandomRange, dirRandomRange);
 
                 // Start with forward direction
                 Vector3 baseDir = waterSpawnLocation.forward;
@@ -104,7 +119,7 @@ public class WateringCan : MonoBehaviour
 
     private void ChangeVol()
     {
-        Debug.Log("isTipped = " + isTipped);
+        //Debug.Log("isTipped = " + isTipped);
         if (isTipped)
         {
             waterCurVol += Time.deltaTime * waterVolRate;
@@ -137,5 +152,11 @@ public class WateringCan : MonoBehaviour
         {
             transform.localScale = baseScale;
         }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, safeRange);
     }
 }

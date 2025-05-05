@@ -15,6 +15,8 @@ public class SellGun : MonoBehaviour
     [SerializeField] private TextMeshPro text;
     private Vector3 baseScale;
     private Vector3 socketScale;
+    public float safeRange = 80f;
+    private Vector3 startPos;
 
     // Start is called before the first frame update
     void Start()
@@ -23,12 +25,14 @@ public class SellGun : MonoBehaviour
         AS = GetComponent<AudioSource>();
         baseScale = transform.localScale;
         socketScale = baseScale * .5f;
+        startPos = transform.position;
     }
 
     private void Update()
     {
         CheckForSocket();
         CheckForPlantInRange();
+        CheckDistance();
     }
 
     public void Shoot()
@@ -81,6 +85,16 @@ public class SellGun : MonoBehaviour
     public void SetLaser(bool isOn)
     {
         laser.SetActive(isOn);
+    }
+
+    private void CheckDistance()
+    {
+        if (Vector3.Distance(transform.position, startPos) > safeRange)
+        {
+            transform.position = startPos;
+            transform.rotation = Quaternion.identity;
+            GetComponent<Rigidbody>().velocity = Vector3.zero;
+        }
     }
 
     private void CheckForSocket()
