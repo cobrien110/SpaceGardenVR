@@ -19,6 +19,7 @@ public class ShopButton : MonoBehaviour
     private AudioSource AS;
     public AudioClip[] sounds;
     private bool isInteractible = false;
+    bool wasBought = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +39,13 @@ public class ShopButton : MonoBehaviour
         }
         if (timer < delay) timer += Time.deltaTime;
 
+        if (wasBought)
+        {
+            MR.material = mats[2];
+            isInteractible = false;
+            return;
+        }
+
         if (timer >= delay)
         {
             if (MR.material != mats[0]) MR.material = mats[0];
@@ -51,6 +59,8 @@ public class ShopButton : MonoBehaviour
             if (MR.material != mats[2]) MR.material = mats[2];
             isInteractible = false;
         }
+
+        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -80,11 +90,12 @@ public class ShopButton : MonoBehaviour
                 if (itemToBuy == null) return;
                 SM.SpawnAndFire(itemToBuy, force, cost);
             }
-            else if (waterUpgrade == 1)
+            else if (waterUpgrade == 1) //fireRate
             {
                 SM.Upgrade(1, cost);
+                wasBought = true;
             }
-            else if (waterUpgrade == 2)
+            else if (waterUpgrade == 2) //amount
             {
                 SM.Upgrade(2, cost);
             }
