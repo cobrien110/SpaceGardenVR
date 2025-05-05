@@ -93,7 +93,7 @@ public class Plant : MonoBehaviour
                 isGrowing = true;
                 isInPot = true;
                 transform.parent = p.seedGrowPoint;
-                transform.position = transform.parent.position;
+                transform.localScale = transform.parent.localScale;
                 SO.SetIsSellable(true);
                 tagObj.SetActive(true);
 
