@@ -3850,7 +3850,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnLocation: {fileID: 1265430827633662991}
-  dirRandomRange: 0.5
+  dirRandomRange: 0.05
   launchForce: 0.5
   fireRatePerUpgrade: 0.05
   text: {fileID: 1779519359510831664}
