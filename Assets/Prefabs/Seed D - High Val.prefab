@@ -38,7 +38,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5162543651277522797, guid: 3fcfd834550b49f4490df7adecdac437, type: 3}
       propertyPath: valuePerStage.Array.data[3]
-      value: 125
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 5162543651277522797, guid: 3fcfd834550b49f4490df7adecdac437, type: 3}
       propertyPath: growTimePerStage.Array.data[1]

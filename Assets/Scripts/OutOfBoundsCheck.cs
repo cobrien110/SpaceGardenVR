@@ -21,9 +21,8 @@ public class OutOfBoundsCheck : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.Equals("Player"))
-        {
-            player.transform.position = playerStart;
-        }
+        Debug.Log(other.name + " hit trig");
+
+        other.transform.position = playerStart;
     }
 }
