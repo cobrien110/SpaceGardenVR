@@ -630,7 +630,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Book_Open (2)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8963875174261761848, guid: 77d9ffc1f2134364086bd543480e5a5f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 8963875174261761848, guid: 77d9ffc1f2134364086bd543480e5a5f, type: 3}
+    - {fileID: 7779532504357887811, guid: 77d9ffc1f2134364086bd543480e5a5f, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -6502,7 +6508,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Book_Open (4)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8963875174261761848, guid: 77d9ffc1f2134364086bd543480e5a5f, type: 3}
+    - {fileID: 7779532504357887811, guid: 77d9ffc1f2134364086bd543480e5a5f, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -14567,7 +14575,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Book_Open (5)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8963875174261761848, guid: 77d9ffc1f2134364086bd543480e5a5f, type: 3}
+    - {fileID: 7779532504357887811, guid: 77d9ffc1f2134364086bd543480e5a5f, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -19845,7 +19855,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Book_Open (3)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8963875174261761848, guid: 77d9ffc1f2134364086bd543480e5a5f, type: 3}
+    - {fileID: 7779532504357887811, guid: 77d9ffc1f2134364086bd543480e5a5f, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -21205,7 +21217,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Book_Open (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8963875174261761848, guid: 77d9ffc1f2134364086bd543480e5a5f, type: 3}
+    - {fileID: 7779532504357887811, guid: 77d9ffc1f2134364086bd543480e5a5f, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
