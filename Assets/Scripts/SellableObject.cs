@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SellableObject : MonoBehaviour
 {
@@ -8,7 +9,9 @@ public class SellableObject : MonoBehaviour
     private StatTracker ST;
     private bool sellable = true;
     private Plant p;
-    
+    public bool willEndGame = false;
+    public string gameOverSceneName = "WIN";
+
     public void SetValue(int v)
     {
         value = v;
@@ -41,6 +44,23 @@ public class SellableObject : MonoBehaviour
 
         Destroy(gameObject);
 
+
+        if (willEndGame)
+        {
+            EndGame();
+        }
+    }
+
+    private void EndGame()
+    {
+        Debug.Log("Game Over! You win!");
+        StartCoroutine(LoadGameOverScene());
+    }
+
+    IEnumerator LoadGameOverScene()
+    {
+        yield return new WaitForSeconds(2f); // optional delay
+        SceneManager.LoadScene(gameOverSceneName);
     }
 
     public void SetIsSellable(bool b)
