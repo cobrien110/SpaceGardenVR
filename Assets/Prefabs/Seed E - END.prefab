@@ -92,6 +92,10 @@ PrefabInstance:
       propertyPath: willEndGame
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5209792831320461222, guid: 3fcfd834550b49f4490df7adecdac437, type: 3}
+      propertyPath: gameOverSceneName
+      value: end_game
+      objectReference: {fileID: 0}
     - target: {fileID: 7156368720562875792, guid: 3fcfd834550b49f4490df7adecdac437, type: 3}
       propertyPath: m_text
       value: Kingis

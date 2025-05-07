@@ -9,6 +9,8 @@ public class RestartButton : MonoBehaviour
     public TextMeshProUGUI text;
     public string message = "$$";
     public bool isInteractible = true;
+    public bool goToScene = false;
+    public string sceneName;
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +40,7 @@ public class RestartButton : MonoBehaviour
     IEnumerator Restart()
     {
         yield return new WaitForSeconds(0.5f); // optional delay
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        if (goToScene) SceneManager.LoadScene(sceneName);
+        else SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

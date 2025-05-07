@@ -99,7 +99,7 @@ public class SellGun : MonoBehaviour
 
     private void CheckForSocket()
     {
-        if (!laser.activeInHierarchy) return;
+        //if (!laser.activeInHierarchy) return;
         bool hasSocket = false;
         foreach (Transform child in transform)
         {

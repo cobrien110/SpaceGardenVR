@@ -825,12 +825,12 @@ MonoBehaviour:
   isInPot: 0
   water: 0
   isBeingHeld: 0
-  foodAmountsPerStage: 050000000a0000001900000028000000
+  foodAmountsPerStage: 0f000000190000002800000050000000
   satiationAmountsPerStage:
-  - 45
-  - 50
-  - 55
-  - 65
+  - 60
+  - 60
+  - 60
+  - 90
   growTimePerStage:
   - 0
   - 5
@@ -896,6 +896,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: 1
+  willEndGame: 0
+  gameOverSceneName: WIN
 --- !u!82 &6368328889682714626
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1482,6 +1484,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: 1
+  willEndGame: 0
+  gameOverSceneName: WIN
 --- !u!1 &5677372943851805669
 GameObject:
   m_ObjectHideFlags: 0

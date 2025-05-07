@@ -15125,6 +15125,22 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2271718122208295182, guid: fd23d5bff418063468161726a0118be1, type: 3}
+      propertyPath: maxHunger
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 2271718122208295182, guid: fd23d5bff418063468161726a0118be1, type: 3}
+      propertyPath: satiation
+      value: 140
+      objectReference: {fileID: 0}
+    - target: {fileID: 2271718122208295182, guid: fd23d5bff418063468161726a0118be1, type: 3}
+      propertyPath: hungerLevel
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 2271718122208295182, guid: fd23d5bff418063468161726a0118be1, type: 3}
+      propertyPath: maxSatiation
+      value: 140
+      objectReference: {fileID: 0}
     - target: {fileID: 4741461197555202458, guid: fd23d5bff418063468161726a0118be1, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.8309
